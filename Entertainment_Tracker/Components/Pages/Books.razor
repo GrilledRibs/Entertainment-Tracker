@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+@inject ProtectedLocalStorage protectedLocalStorage
+
+@page "/books"
+
+<PageTitle>Books</PageTitle>
+
+<h1>Books</h1>
+
+<button class="btn btn-primary" @onclick="@GetEntryLocal">Get</button>
+<p role="status">@entryName</p>
+<br />
+<button class="btn btn-primary" @onclick="@DeleteEntryLocal">Get</button>
+
+@code {
+    string entryName = "Null";
+    Entry entry = new Entry(0, "testname", ETypes.Book);
+
+    private async Task GetEntryLocal()
+    {
+        var result = await protectedLocalStorage.GetAsync<Entry>("0");
+        entryName = result.Success ? result.Value.name : "Null";
+    }
+
+    private async Task DeleteEntryLocal()
+    {
+        await protectedLocalStorage.DeleteAsync(entry.id.ToString());
+    }
+}

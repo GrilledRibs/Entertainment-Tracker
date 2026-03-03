@@ -1,0 +1,4 @@
+wwwroot\appsettings.Development.json
+wwwroot\appsettings.json
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\wwwroot\appsettings.Development.json
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\wwwroot\appsettings.json

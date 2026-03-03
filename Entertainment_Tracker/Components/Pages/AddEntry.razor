@@ -1,0 +1,93 @@
+﻿@inject ProtectedLocalStorage protectedLocalStorage
+@inject NavigationManager NavigationManager
+@page "/addentry"
+<PageTitle>Add Entry</PageTitle>
+<h3>Add Entry</h3>
+
+<EditForm Model="@entry">
+    <div class="mb-3">
+        Name:
+        <InputText @bind-Value="entry.name" />
+    </div>
+    <div class="mb-3">
+        <InputRadioGroup @bind-Value="@entry.type">
+            @foreach (ETypes types in Enum.GetValues(typeof(ETypes)))
+            {               
+                <InputRadio Value="@types" class="form-check-input" />
+                <label class="form-check-label">@types &nbsp;</label>
+            }
+        </InputRadioGroup>
+    </div>
+    <div class="mb-3">
+        <InputSelect class="form-select" @bind-value="entry.rating">
+            @for (int i = 1; i <= 10;  i++)
+            {
+                <option Value="@i" class="form-check-input">@i</option>
+            }
+        </InputSelect>
+    </div>
+    <div class="mb-3">
+        <InputSelect class="form-select" @bind-value="entry.genre">
+            @if(genres != null)
+            {
+                @foreach (string genre in genres)
+                {
+                    <option Value="@genre" class="form-check-input">@genre</option>
+                }
+            }           
+        </InputSelect>
+    </div>
+    <div class="mb-3">
+        Add new genre:
+        <InputText @bind-Value="newGenre" />
+        <button class="btn btn-primary" @onclick="@AddNewGenre">Add new genre</button>
+    </div>
+
+    <button class="btn btn-primary" @onclick="@StoreEntryLocal">Add</button>
+</EditForm>
+
+
+
+@code {
+    Entry entry = new Entry();
+    List<string> genres = new List<string>();
+    string newGenre = "";
+
+    
+
+    protected override async Task OnInitializedAsync()
+    {
+        await UpdateGenres();
+    }
+
+    private async Task UpdateGenres()
+    {
+        var result = await protectedLocalStorage.GetAsync<List<string>>("genres");
+        if(result.Value == null)
+            genres = new List<string>();
+        else
+            genres = result.Value;
+    }
+
+    private async Task AddNewGenre()
+    {
+        await UpdateGenres();
+        if (!genres.Contains(newGenre))
+        {
+            genres.Add(newGenre);
+            await StoreGenresLocal();
+            NavigationManager.NavigateTo("/addentry", true);
+        }       
+    }
+    private async Task StoreGenresLocal()
+    {
+        await protectedLocalStorage.SetAsync("genres", genres);
+    }
+
+    private async Task StoreEntryLocal()
+    {
+        await protectedLocalStorage.SetAsync(entry.id.ToString(), entry);
+    }
+
+    
+}
