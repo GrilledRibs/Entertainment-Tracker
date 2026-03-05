@@ -10,13 +10,15 @@
         <InputText @bind-Value="entry.name" />
     </div>
     <div class="mb-3">
-        <InputRadioGroup @bind-Value="@entry.type">
-            @foreach (ETypes types in Enum.GetValues(typeof(ETypes)))
-            {               
-                <InputRadio Value="@types" class="form-check-input" />
+        @foreach (ETypes types in Enum.GetValues(typeof(ETypes)))
+        {
+            if(types != ETypes.None)
+            {
+                <input type="radio" name="EntertainmentType" value="@types" @onchange="RadioSelection" />
                 <label class="form-check-label">@types &nbsp;</label>
             }
-        </InputRadioGroup>
+        }
+
     </div>
     <div class="mb-3">  
         Rating
@@ -33,18 +35,40 @@
         <InputSelect class="form-select" @bind-value="entry.genre">
             @if(genres != null)
             {
+                <option Value="" class="form-check-input"></option>
                 @foreach (string genre in genres)
                 {
-                    <option Value="@genre" class="form-check-input">@genre</option>
+                    <option @key="@genre" Value="@genre" class="form-check-input">@genre</option>
                 }
             }           
         </InputSelect>
     </div>
+    
     <div class="mb-3">
         Add new genre:
         <InputText @bind-Value="newGenre" />
         <button class="btn btn-primary" @onclick="@AddNewGenre">Add new genre</button>
         <button class="btn btn-primary" @onclick="@DeleteGenre">Delete the above selected genre</button>
+    </div>
+
+    <div class="mb-3">
+        Shelf
+        <InputSelect class="form-select" @bind-value="entry.shelf">           
+            @if (shelves != null)
+            {
+                <option Value="" class="form-check-input"></option>
+                @foreach (string shelf in shelves)
+                {
+                    <option @key="@shelf" Value="@shelf" class="form-check-input">@shelf</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div class="mb-3">
+        Add new shelf:
+        <InputText @bind-Value="newShelf" />
+        <button class="btn btn-primary" @onclick="@AddNewShelf">Add new shelf</button>
+        <button class="btn btn-primary" @onclick="@DeleteShelf">Delete the above selected shelf</button>
     </div>
 
     <button class="btn btn-primary" @onclick="@StoreEntryLocal">Add entry</button>
@@ -56,15 +80,27 @@
     Entry entry = new Entry();
     List<string> genres = new List<string>();
     string newGenre = "";
+    List<string> shelves = new List<string>();
+    string newShelf = "";
+
 
     protected override async Task OnInitializedAsync()
     {
         await UpdateGenres();
+        await UpdateSheves();
     }
 
+    private async Task RadioSelection(ChangeEventArgs args)
+    {
+        entry.type = Enum.Parse<ETypes>(args.Value.ToString());
+        await UpdateGenres();
+        await UpdateSheves();
+    }
+
+    // Genres
     private async Task UpdateGenres()
     {
-        var result = await protectedLocalStorage.GetAsync<List<string>>("genres");
+        var result = await protectedLocalStorage.GetAsync<List<string>>("genres" + entry.type.ToString());
         if(result.Value == null)
             genres = new List<string>();
         else
@@ -74,17 +110,16 @@
     private async Task AddNewGenre()
     {
         await UpdateGenres();
-        if (!genres.Contains(newGenre))
+        if (!genres.Contains(newGenre) && entry.type != ETypes.None)
         {
             genres.Add(newGenre);
             await StoreGenresLocal();
-            NavigationManager.NavigateTo("/addentry", true);
         }       
     }
 
     private async Task StoreGenresLocal()
     {
-        await protectedLocalStorage.SetAsync("genres", genres);
+        await protectedLocalStorage.SetAsync("genres" + entry.type.ToString(), genres);
     }
 
     private async Task DeleteGenre()
@@ -92,11 +127,51 @@
         if (entry.genre != null)
         {
             genres.Remove(entry.genre);
-            await protectedLocalStorage.SetAsync("genres", genres);
-            NavigationManager.NavigateTo("/addentry", true);
+            if (genres.Count == 0)
+                await protectedLocalStorage.DeleteAsync("genres" + entry.type.ToString());
+            else
+                await protectedLocalStorage.SetAsync("genres" + entry.type.ToString(), genres);
         }
     }
 
+    // Shelves
+    private async Task UpdateSheves()
+    {
+        var result = await protectedLocalStorage.GetAsync<List<string>>("shelves" + entry.type.ToString());
+        if (result.Value == null)
+            shelves = new List<string>();
+        else
+            shelves = result.Value;
+    }
+
+    private async Task AddNewShelf()
+    {
+        await UpdateSheves();
+        if (!shelves.Contains(newShelf) && entry.type != ETypes.None)
+        {
+            shelves.Add(newShelf);
+            await StoreShelvesLocal();
+        }
+    }
+
+    private async Task StoreShelvesLocal()
+    {
+        await protectedLocalStorage.SetAsync("shelves" + entry.type.ToString(), shelves);
+    }
+
+    private async Task DeleteShelf()
+    {
+        if (entry.shelf != null)
+        {
+            shelves.Remove(entry.shelf);
+            if (shelves.Count == 0)
+                await protectedLocalStorage.DeleteAsync("shelves" + entry.type.ToString());
+            else
+                await protectedLocalStorage.SetAsync("shelves" + entry.type.ToString(), shelves);
+        }
+    }
+
+    // Store Entry
     private async Task StoreEntryLocal()
     {
         await protectedLocalStorage.SetAsync(entry.id.ToString(), entry);

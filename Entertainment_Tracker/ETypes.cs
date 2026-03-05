@@ -2,9 +2,10 @@
 {
     public enum ETypes
     {
-        Book = 0,
-        Game = 1,
-        Movie = 2,
-        Series = 3,
+        None = 0,
+        Book = 1,
+        Game = 2,
+        Movie = 3,
+        Series = 4,
     }
 }
