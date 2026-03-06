@@ -59,7 +59,7 @@
                 <option Value="" class="form-check-input"></option>
                 @foreach (string shelf in shelves)
                 {
-                    <option @key="@shelf" Value="@shelf" class="form-check-input">@shelf</option>
+                    <option @key="@shelf" Value="@shelf" class="form-check-input" >@shelf</option>
                 }
             }
         </InputSelect>
@@ -71,13 +71,32 @@
         <button class="btn btn-primary" @onclick="@DeleteShelf">Delete the above selected shelf</button>
     </div>
 
+    <div class="mb-3">
+        <label class="form-label"> Date Started </label>
+        <InputDate @bind-Value="@entry.dateStarted" class="form-control" /> 
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label"> Date Finished </label>
+        <InputDate @bind-Value="@entry.dateFinished" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label"> Thoughts </label> <br />
+        <InputTextArea @bind-Value="@entry.thoughts" style="width: 50%;"  />
+    </div>
+
     <button class="btn btn-primary" @onclick="@StoreEntryLocal">Add entry</button>
 </EditForm>
 
 
 
 @code {
-    Entry entry = new Entry();
+    Entry entry = new Entry
+    {
+        dateStarted = DateOnly.Parse(DateTime.Now.ToLongDateString())
+    };
+
     List<string> genres = new List<string>();
     string newGenre = "";
     List<string> shelves = new List<string>();

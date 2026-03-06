@@ -81,3 +81,17 @@ D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\obj\Debug\
 D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\obj\Debug\net10.0\staticwebassets.build.json
 D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\obj\Debug\net10.0\staticwebassets.build.json
 D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\obj\Debug\net10.0\staticwebassets.build.json
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\obj\Debug\net10.0\staticwebassets.build.json
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\obj\Debug\net10.0\staticwebassets.build.json
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\obj\Debug\net10.0\staticwebassets.build.json
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\obj\Debug\net10.0\staticwebassets.build.json
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\obj\Debug\net10.0\staticwebassets.build.json
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\obj\Debug\net10.0\staticwebassets.build.json
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\obj\Debug\net10.0\staticwebassets.build.json
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\obj\Debug\net10.0\staticwebassets.build.json
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\obj\Debug\net10.0\staticwebassets.build.json
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\obj\Debug\net10.0\staticwebassets.build.json
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\obj\Debug\net10.0\staticwebassets.build.json
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\obj\Debug\net10.0\staticwebassets.build.json
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\obj\Debug\net10.0\staticwebassets.build.json
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker.Client\obj\Debug\net10.0\staticwebassets.build.json
