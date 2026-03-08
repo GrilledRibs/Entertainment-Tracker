@@ -85,6 +85,31 @@
         <label class="form-label"> Thoughts </label> <br />
         <InputTextArea @bind-Value="@entry.thoughts" style="width: 50%;"  />
     </div>
+    
+    <div class="mb-4">
+        <div class="mb-2">
+        Select Episode
+            <select value="@selectedEpisode" class="form-select" @onchange="ChangeSelectedEpisodeThoughts">
+            @if (shelves != null)
+            {
+                @for (int i = 1; i <= entry.episodes; i++)
+                {
+                    <option @key="@i" Value="@i" class="form-check-input">@i</option>
+                }
+            }
+        </select>
+        </div>
+        <div class="mb-2">
+            <button class="btn btn-primary" @onclick="@AddEpisode">Add new episode</button>
+            <button class="btn btn-primary" @onclick="@DeleteLatestEpisode">Delete latest episode</button>
+        </div>
+
+        <div class="mb-2">
+            <label class="form-label"> Thoughts on selected episode </label> <br />
+            <InputTextArea @key="entry.episodeThoughts[selectedEpisode]" @bind-Value="@entry.episodeThoughts[selectedEpisode]" style="width: 50%;" />
+        </div>
+    </div>
+    
 
     <button class="btn btn-primary" @onclick="@StoreEntryLocal">Add entry</button>
 </EditForm>
@@ -94,13 +119,16 @@
 @code {
     Entry entry = new Entry
     {
-        dateStarted = DateOnly.Parse(DateTime.Now.ToLongDateString())
+        dateStarted = DateOnly.Parse(DateTime.Now.ToLongDateString()),
+        episodeThoughts = new List<string>() { new string("") },
     };
 
     List<string> genres = new List<string>();
     string newGenre = "";
     List<string> shelves = new List<string>();
     string newShelf = "";
+    int selectedEpisode = 0;
+    string episodeThoughts = "";
 
 
     protected override async Task OnInitializedAsync()
@@ -190,10 +218,39 @@
         }
     }
 
+    // Episodes
+    private void AddEpisode()
+    {
+        entry.episodes++;
+        if (entry.episodeThoughts == null)
+            entry.episodeThoughts = new List<string>();
+        entry.episodeThoughts.Add("");
+        if(entry.episodes == 1)
+            selectedEpisode = 1;
+        else
+            selectedEpisode = entry.episodes;
+    }
+    private void DeleteLatestEpisode()
+    {
+        if(entry.episodes-1>=0)
+        {
+            entry.episodes--;
+            entry.episodeThoughts.RemoveAt(entry.episodeThoughts.Count - 1);
+            selectedEpisode = entry.episodes;
+        }   
+    }
+    private void ChangeSelectedEpisodeThoughts(ChangeEventArgs args)
+    {
+        int index = Int32.Parse(args.Value.ToString());
+        selectedEpisode = index;
+        if (index>=0)
+            episodeThoughts = entry.episodeThoughts[index];
+    }
+
     // Store Entry
     private async Task StoreEntryLocal()
     {
-        await protectedLocalStorage.SetAsync(entry.id.ToString(), entry);
+        //await protectedLocalStorage.SetAsync(entry.id.ToString(), entry);
     }
     
 }

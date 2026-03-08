@@ -11,7 +11,7 @@
         public DateOnly dateStarted { get; set; }
         public DateOnly dateFinished { get; set; }
         public string thoughts { get; set; }
-        public int episodesFinished { get; set; }
+        public int episodes{ get; set; }
         public List<string> episodeThoughts { get; set; }
 
         public Entry() { }
