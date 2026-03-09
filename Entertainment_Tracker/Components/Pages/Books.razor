@@ -7,23 +7,51 @@
 
 <h1>Books</h1>
 
-<button class="btn btn-primary" @onclick="@GetEntryLocal">Get</button>
-<p role="status">@entryName</p>
-<br />
-<button class="btn btn-primary" @onclick="@DeleteEntryLocal">Get</button>
+@if (sortedList.Count > 0)
+{
+    @for (int i = 0; i < sortedList.Count; i++)
+    {
+        <div class="outerDiv">
+            <div class="innerDiv">
+                <h3>@sortedList[i].name</h3>
+                <label class="form-label"> Format:&nbsp;@sortedList[i].type &nbsp; | &nbsp;</label>
+                <label class="form-label"> Rating:&nbsp;@sortedList[i].rating / 10 &nbsp; | &nbsp;</label>
+                <label class="form-label"> Genre:&nbsp;@sortedList[i].genre &nbsp; | &nbsp;</label>
+                <label class="form-label"> Shelf:&nbsp;@sortedList[i].shelf &nbsp; | &nbsp;</label>
+                <label class="form-label"> Date Started:&nbsp;@sortedList[i].dateStarted &nbsp; | &nbsp;</label>
+                <label class="form-label"> Date Finished:&nbsp;@sortedList[i].dateFinished &nbsp; | &nbsp;</label>
+                <br />
+                <label class="form-label"> @sortedList[i].thoughts &nbsp;</label>
+            </div>
+        </div>
+    }
+}
 
 @code {
-    string entryName = "Null";
-    Entry entry = new Entry(0, "testname", ETypes.Book);
+    List<Entry> entryList = new List<Entry>();
+    List<Entry> sortedList = new List<Entry>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetEntryLocal();
+    }
 
     private async Task GetEntryLocal()
     {
-        var result = await protectedLocalStorage.GetAsync<Entry>("0");
-        entryName = result.Success ? result.Value.name : "Null";
+        var result = await protectedLocalStorage.GetAsync<List<Entry>>("entryList");
+        if (result.Value != null)
+            entryList = result.Value;
+        foreach(Entry entry in entryList)
+        {
+            if(entry.type == ETypes.Book)
+            {
+                sortedList.Add(entry);
+            }
+        }
     }
 
     private async Task DeleteEntryLocal()
     {
-        await protectedLocalStorage.DeleteAsync(entry.id.ToString());
+        //await protectedLocalStorage.DeleteAsync(entry.id.ToString());
     }
 }

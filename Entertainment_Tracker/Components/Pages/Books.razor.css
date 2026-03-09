@@ -1,0 +1,21 @@
+﻿body {
+
+}
+
+.info {
+    
+}
+h1 {
+
+}
+
+.outerDiv {
+    background-color: rgb(5, 39, 103);
+    color: white;
+    margin: 20px;
+    border-radius:10px;
+}
+
+.innerDiv{
+    padding:10px;
+}

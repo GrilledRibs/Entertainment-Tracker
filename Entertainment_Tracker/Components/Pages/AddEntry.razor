@@ -120,9 +120,11 @@
     Entry entry = new Entry
     {
         dateStarted = DateOnly.Parse(DateTime.Now.ToLongDateString()),
+        dateFinished = DateOnly.Parse(DateTime.Now.ToLongDateString()),
         episodeThoughts = new List<string>() { new string("") },
+        type =  ETypes.None
     };
-
+    List<Entry> entryList = new List<Entry>();
     List<string> genres = new List<string>();
     string newGenre = "";
     List<string> shelves = new List<string>();
@@ -250,7 +252,21 @@
     // Store Entry
     private async Task StoreEntryLocal()
     {
-        //await protectedLocalStorage.SetAsync(entry.id.ToString(), entry);
+        var result = await protectedLocalStorage.GetAsync<List<Entry>>("entryList");
+        if (entry.type == ETypes.None)
+            return;
+
+        if(result.Value!=null)       
+            entryList = result.Value;
+
+        if (entryList.Count>0)
+            entry.id = entryList.Last().id + 1;
+        else
+            entry.id = 0;
+
+        entryList.Add(entry);
+        
+        await protectedLocalStorage.SetAsync("entryList", entryList);
     }
     
 }

@@ -203,3 +203,25 @@ main[b-bgl45butvl] {
         overflow-y: auto;
     }
 }
+/* /Components/Pages/Books.razor.rz.scp.css */
+body[b-8wg8ln5t79] {
+
+}
+
+.info[b-8wg8ln5t79] {
+    
+}
+h1[b-8wg8ln5t79] {
+
+}
+
+.outerDiv[b-8wg8ln5t79] {
+    background-color: rgb(5, 39, 103);
+    color: white;
+    margin: 20px;
+    border-radius:10px;
+}
+
+.innerDiv[b-8wg8ln5t79]{
+    padding:10px;
+}
