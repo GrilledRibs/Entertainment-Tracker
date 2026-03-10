@@ -1,5 +1,7 @@
+using Entertainment_Tracker;
 using Entertainment_Tracker.Client.Pages;
 using Entertainment_Tracker.Components;
+using System.Net.NetworkInformation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+builder.Services.AddScoped<EntryContainer>();
 
 var app = builder.Build();
 

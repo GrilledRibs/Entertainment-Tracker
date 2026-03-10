@@ -22,4 +22,9 @@
             type = _type;
         }
     }
+
+    public class EntryContainer
+    {
+        public Entry Entry { get; set; }
+    }
 }

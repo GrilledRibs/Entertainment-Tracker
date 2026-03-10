@@ -1,5 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @inject ProtectedLocalStorage protectedLocalStorage
+@inject NavigationManager NavigationManager
+@inject EntryContainer EntryContainer
 
 @page "/books"
 
@@ -9,19 +11,20 @@
 
 @if (sortedList.Count > 0)
 {
-    @for (int i = 0; i < sortedList.Count; i++)
+    @foreach (Entry entry in sortedList)
     {
         <div class="outerDiv">
             <div class="innerDiv">
-                <h3>@sortedList[i].name</h3>
-                <label class="form-label"> Format:&nbsp;@sortedList[i].type &nbsp; | &nbsp;</label>
-                <label class="form-label"> Rating:&nbsp;@sortedList[i].rating / 10 &nbsp; | &nbsp;</label>
-                <label class="form-label"> Genre:&nbsp;@sortedList[i].genre &nbsp; | &nbsp;</label>
-                <label class="form-label"> Shelf:&nbsp;@sortedList[i].shelf &nbsp; | &nbsp;</label>
-                <label class="form-label"> Date Started:&nbsp;@sortedList[i].dateStarted &nbsp; | &nbsp;</label>
-                <label class="form-label"> Date Finished:&nbsp;@sortedList[i].dateFinished &nbsp; | &nbsp;</label>
+                <h3>@entry.name</h3>
+                <label class="form-label"> Format:&nbsp;@entry.type &nbsp; | &nbsp;</label>
+                <label class="form-label"> Rating:&nbsp;@entry.rating / 10 &nbsp; | &nbsp;</label>
+                <label class="form-label"> Genre:&nbsp;@entry.genre &nbsp; | &nbsp;</label>
+                <label class="form-label"> Shelf:&nbsp;@entry.shelf &nbsp; | &nbsp;</label>
+                <label class="form-label"> Date Started:&nbsp;@entry.dateStarted &nbsp; | &nbsp;</label>
+                <label class="form-label"> Date Finished:&nbsp;@entry.dateFinished &nbsp; | &nbsp;</label>
                 <br />
-                <label class="form-label"> @sortedList[i].thoughts &nbsp;</label>
+                <label class="form-label"> @entry.thoughts &nbsp;</label>
+                <button class="btn btn-primary" @onclick="@(() => EditEntry(entry))">Edit</button>
             </div>
         </div>
     }
@@ -48,6 +51,12 @@
                 sortedList.Add(entry);
             }
         }
+    }
+
+    private void EditEntry(Entry entry)
+    {
+        EntryContainer.Entry = entry;
+        NavigationManager.NavigateTo("/edit");
     }
 
     private async Task DeleteEntryLocal()

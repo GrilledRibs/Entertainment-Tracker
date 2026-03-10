@@ -1,0 +1,251 @@
+﻿@inject ProtectedLocalStorage protectedLocalStorage
+@inject NavigationManager NavigationManager
+@inject EntryContainer EntryContainer
+@page "/edit"
+<PageTitle>Edit Entry</PageTitle>
+<h3>Edit Entry</h3>
+
+<EditForm Model="@entry">
+    <div class="mb-3">
+        Name:
+        <InputText @bind-Value="entry.name" />
+    </div>
+    <div class="mb-3">
+        Rating
+        <InputSelect class="form-select" @bind-value="entry.rating">
+
+            @for (int i = 1; i <= 10; i++)
+            {
+                <option Value="@i" class="form-check-input">@i</option>
+            }
+        </InputSelect>
+    </div>
+    <div class="mb-3">
+        Genre
+        <InputSelect class="form-select" @bind-value="entry.genre">
+            @if (genres != null)
+            {
+                <option Value="" class="form-check-input"></option>
+                @foreach (string genre in genres)
+                {
+                    <option @key="@genre" Value="@genre" class="form-check-input">@genre</option>
+                }
+            }
+        </InputSelect>
+    </div>
+
+    <div class="mb-3">
+        Add new genre:
+        <InputText @bind-Value="newGenre" />
+        <button class="btn btn-primary" @onclick="@AddNewGenre">Add new genre</button>
+        <button class="btn btn-primary" @onclick="@DeleteGenre">Delete the above selected genre</button>
+    </div>
+
+    <div class="mb-3">
+        Shelf
+        <InputSelect class="form-select" @bind-value="entry.shelf">
+            @if (shelves != null)
+            {
+                <option Value="" class="form-check-input"></option>
+                @foreach (string shelf in shelves)
+                {
+                    <option @key="@shelf" Value="@shelf" class="form-check-input">@shelf</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div class="mb-3">
+        Add new shelf:
+        <InputText @bind-Value="newShelf" />
+        <button class="btn btn-primary" @onclick="@AddNewShelf">Add new shelf</button>
+        <button class="btn btn-primary" @onclick="@DeleteShelf">Delete the above selected shelf</button>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label"> Date Started </label>
+        <InputDate @bind-Value="@entry.dateStarted" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label"> Date Finished </label>
+        <InputDate @bind-Value="@entry.dateFinished" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label"> Thoughts </label> <br />
+        <InputTextArea @bind-Value="@entry.thoughts" style="width: 50%;" />
+    </div>
+
+    <div class="mb-4">
+        <div class="mb-2">
+            Select Episode
+            <select value="@selectedEpisode" class="form-select" @onchange="ChangeSelectedEpisodeThoughts">
+                @if (shelves != null)
+                {
+                    @for (int i = 1; i <= entry.episodes; i++)
+                    {
+                        <option @key="@i" Value="@i" class="form-check-input">@i</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="mb-2">
+            <button class="btn btn-primary" @onclick="@AddEpisode">Add new episode</button>
+            <button class="btn btn-primary" @onclick="@DeleteLatestEpisode">Delete latest episode</button>
+        </div>
+
+        <div class="mb-2">
+            <label class="form-label"> Thoughts on selected episode </label> <br />
+            <InputTextArea @key="entry.episodeThoughts[selectedEpisode]" @bind-Value="@entry.episodeThoughts[selectedEpisode]" style="width: 50%;" />
+        </div>
+    </div>
+
+
+    <button class="btn btn-primary" @onclick="@StoreEntryLocal">Save Changes</button>
+</EditForm>
+@code {
+    Entry entry = new Entry
+    {
+        dateStarted = DateOnly.Parse(DateTime.Now.ToLongDateString()),
+        dateFinished = DateOnly.Parse(DateTime.Now.ToLongDateString()),
+        episodeThoughts = new List<string>() { new string("") },
+        type = ETypes.None
+    };
+    Entry entryOld = new Entry();
+    List<Entry> entryList = new List<Entry>();
+    List<string> genres = new List<string>();
+    string newGenre = "";
+    List<string> shelves = new List<string>();
+    string newShelf = "";
+    int selectedEpisode = 0;
+    string episodeThoughts = "";
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        entry = EntryContainer.Entry;
+        entryOld = EntryContainer.Entry;
+        selectedEpisode = entry.episodes;
+        await UpdateGenres();
+        await UpdateSheves();
+    }
+
+    // Genres
+    private async Task UpdateGenres()
+    {
+        var result = await protectedLocalStorage.GetAsync<List<string>>("genres" + entry.type.ToString());
+        if (result.Value == null)
+            genres = new List<string>();
+        else
+            genres = result.Value;
+    }
+
+    private async Task AddNewGenre()
+    {
+        await UpdateGenres();
+        if (!genres.Contains(newGenre) && entry.type != ETypes.None)
+        {
+            genres.Add(newGenre);
+            await StoreGenresLocal();
+        }
+    }
+
+    private async Task StoreGenresLocal()
+    {
+        await protectedLocalStorage.SetAsync("genres" + entry.type.ToString(), genres);
+    }
+
+    private async Task DeleteGenre()
+    {
+        if (entry.genre != null)
+        {
+            genres.Remove(entry.genre);
+            if (genres.Count == 0)
+                await protectedLocalStorage.DeleteAsync("genres" + entry.type.ToString());
+            else
+                await protectedLocalStorage.SetAsync("genres" + entry.type.ToString(), genres);
+        }
+    }
+
+    // Shelves
+    private async Task UpdateSheves()
+    {
+        var result = await protectedLocalStorage.GetAsync<List<string>>("shelves" + entry.type.ToString());
+        if (result.Value == null)
+            shelves = new List<string>();
+        else
+            shelves = result.Value;
+    }
+
+    private async Task AddNewShelf()
+    {
+        await UpdateSheves();
+        if (!shelves.Contains(newShelf) && entry.type != ETypes.None)
+        {
+            shelves.Add(newShelf);
+            await StoreShelvesLocal();
+        }
+    }
+
+    private async Task StoreShelvesLocal()
+    {
+        await protectedLocalStorage.SetAsync("shelves" + entry.type.ToString(), shelves);
+    }
+
+    private async Task DeleteShelf()
+    {
+        if (entry.shelf != null)
+        {
+            shelves.Remove(entry.shelf);
+            if (shelves.Count == 0)
+                await protectedLocalStorage.DeleteAsync("shelves" + entry.type.ToString());
+            else
+                await protectedLocalStorage.SetAsync("shelves" + entry.type.ToString(), shelves);
+        }
+    }
+
+    // Episodes
+    private void AddEpisode()
+    {
+        entry.episodes++;
+        if (entry.episodeThoughts == null)
+            entry.episodeThoughts = new List<string>();
+        entry.episodeThoughts.Add("");
+        if (entry.episodes == 1)
+            selectedEpisode = 1;
+        else
+            selectedEpisode = entry.episodes;
+    }
+    private void DeleteLatestEpisode()
+    {
+        if (entry.episodes - 1 >= 0)
+        {
+            entry.episodes--;
+            entry.episodeThoughts.RemoveAt(entry.episodeThoughts.Count - 1);
+            selectedEpisode = entry.episodes;
+        }
+    }
+    private void ChangeSelectedEpisodeThoughts(ChangeEventArgs args)
+    {
+        int index = Int32.Parse(args.Value.ToString());
+        selectedEpisode = index;
+        if (index >= 0)
+            episodeThoughts = entry.episodeThoughts[index];
+    }
+
+    // Store Entry
+    private async Task StoreEntryLocal()
+    {
+        var result = await protectedLocalStorage.GetAsync<List<Entry>>("entryList");
+        if (entry.type == ETypes.None)
+            return;
+
+        if (result.Value != null)
+            entryList = result.Value;
+
+        entryList.RemoveAt(entry.id);
+        entryList.Insert(entry.id, entry);
+
+        await protectedLocalStorage.SetAsync("entryList", entryList);
+    }
+}
