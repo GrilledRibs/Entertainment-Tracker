@@ -25,6 +25,6 @@
 
     public class EntryContainer
     {
-        public Entry Entry { get; set; }
+        public int index { get; set; }
     }
 }

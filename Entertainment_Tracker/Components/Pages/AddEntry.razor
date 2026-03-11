@@ -252,21 +252,49 @@
     // Store Entry
     private async Task StoreEntryLocal()
     {
-        var result = await protectedLocalStorage.GetAsync<List<Entry>>("entryList");
+        await GetEntry();
         if (entry.type == ETypes.None)
             return;
 
-        if(result.Value!=null)       
-            entryList = result.Value;
-
         if (entryList.Count>0)
-            entry.id = entryList.Last().id + 1;
+        {
+            entry.id = GetSmallestVacantId();
+        }
         else
             entry.id = 0;
 
         entryList.Add(entry);
-        
+
         await protectedLocalStorage.SetAsync("entryList", entryList);
     }
-    
+
+    private async Task GetEntry()
+    {
+        var result = await protectedLocalStorage.GetAsync<List<Entry>>("entryList");
+        if (result.Value != null)
+            entryList = result.Value;
+    }
+
+    private int GetSmallestVacantId()
+    {
+        int smallestVacant = -1;
+        List<int> idList = new List<int>();
+        if (entryList == null && entryList.Count <= 0)
+            return smallestVacant;
+
+        foreach (Entry entry in entryList)
+        {
+            idList.Add(entry.id);
+        }
+        foreach (int id in idList)
+        {
+            if (!idList.Contains(id + 1))
+            {
+                if (smallestVacant == -1) smallestVacant = id + 1;
+                else if (id + 1 < smallestVacant)
+                    smallestVacant = id + 1;
+            }
+        }
+        return smallestVacant;
+    }
 }

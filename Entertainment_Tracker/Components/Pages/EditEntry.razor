@@ -111,7 +111,6 @@
         episodeThoughts = new List<string>() { new string("") },
         type = ETypes.None
     };
-    Entry entryOld = new Entry();
     List<Entry> entryList = new List<Entry>();
     List<string> genres = new List<string>();
     string newGenre = "";
@@ -123,8 +122,8 @@
 
     protected override async Task OnInitializedAsync()
     {
-        entry = EntryContainer.Entry;
-        entryOld = EntryContainer.Entry;
+        await GetEntry();
+        entry = entryList[EntryContainer.index];
         selectedEpisode = entry.episodes;
         await UpdateGenres();
         await UpdateSheves();
@@ -233,19 +232,22 @@
             episodeThoughts = entry.episodeThoughts[index];
     }
 
+
     // Store Entry
     private async Task StoreEntryLocal()
     {
-        var result = await protectedLocalStorage.GetAsync<List<Entry>>("entryList");
-        if (entry.type == ETypes.None)
-            return;
+        await GetEntry();
 
-        if (result.Value != null)
-            entryList = result.Value;
-
-        entryList.RemoveAt(entry.id);
-        entryList.Insert(entry.id, entry);
+        entryList.RemoveAt(EntryContainer.index);
+        entryList.Insert(EntryContainer.index, entry);
 
         await protectedLocalStorage.SetAsync("entryList", entryList);
+    }
+
+    private async Task GetEntry()
+    {
+        var result = await protectedLocalStorage.GetAsync<List<Entry>>("entryList");
+        if (result.Value != null)
+            entryList = result.Value;
     }
 }

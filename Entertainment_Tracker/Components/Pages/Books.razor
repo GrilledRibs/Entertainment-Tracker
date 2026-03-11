@@ -24,7 +24,8 @@
                 <label class="form-label"> Date Finished:&nbsp;@entry.dateFinished &nbsp; | &nbsp;</label>
                 <br />
                 <label class="form-label"> @entry.thoughts &nbsp;</label>
-                <button class="btn btn-primary" @onclick="@(() => EditEntry(entry))">Edit</button>
+                <button class="btn btn-primary" @onclick="@(() => EditEntry(entryList.IndexOf(entry)))">Edit</button>
+                <button class="btn btn-primary" @onclick="@(() => DeleteEntryLocal(entryList.IndexOf(entry)))">Delete</button>
             </div>
         </div>
     }
@@ -44,23 +45,31 @@
         var result = await protectedLocalStorage.GetAsync<List<Entry>>("entryList");
         if (result.Value != null)
             entryList = result.Value;
-        foreach(Entry entry in entryList)
+
+        UpdateSortedList();
+    }
+
+    private void UpdateSortedList()
+    {
+        foreach (Entry entry in entryList)
         {
-            if(entry.type == ETypes.Book)
+            if (entry.type == ETypes.Book)
             {
                 sortedList.Add(entry);
             }
         }
     }
 
-    private void EditEntry(Entry entry)
+    private void EditEntry(int index)
     {
-        EntryContainer.Entry = entry;
+        EntryContainer.index = index;
         NavigationManager.NavigateTo("/edit");
     }
 
-    private async Task DeleteEntryLocal()
+    private async Task DeleteEntryLocal(int index)
     {
-        //await protectedLocalStorage.DeleteAsync(entry.id.ToString());
+        entryList.RemoveAt(index);
+        await protectedLocalStorage.SetAsync("entryList", entryList);
+        UpdateSortedList();
     }
 }

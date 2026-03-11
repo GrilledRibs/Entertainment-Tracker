@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Entertainment_Tracker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dcf85677f6c730ac57290c27355a154e068cdafd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ced8bcca926090383cdaf5b1647a20bafb357a4b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Entertainment_Tracker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Entertainment_Tracker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
