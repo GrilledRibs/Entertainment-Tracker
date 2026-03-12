@@ -1,0 +1,59 @@
+﻿@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+@inject ProtectedLocalStorage protectedLocalStorage
+@inject NavigationManager NavigationManager
+@inject EntryContainer EntryContainer
+
+@page "/details"
+
+<PageTitle>Entry Details</PageTitle>
+
+<div>
+    <div>
+        <h3>@entry.name</h3>
+        <label class="form-label"> Format:&nbsp;@entry.type &nbsp; | &nbsp;</label>
+        <label class="form-label"> Rating:&nbsp;@entry.rating / 10 &nbsp; | &nbsp;</label>
+        <label class="form-label"> Genre:&nbsp;@entry.genre &nbsp; | &nbsp;</label>
+        <label class="form-label"> Shelf:&nbsp;@entry.shelf &nbsp; | &nbsp;</label>
+        <label class="form-label"> Date Started:&nbsp;@entry.dateStarted &nbsp; | &nbsp;</label>
+        <label class="form-label"> Date Finished:&nbsp;@entry.dateFinished &nbsp; | &nbsp;</label>
+    </div>
+    <div>
+        <p> @entry.thoughts &nbsp;</p>
+    </div>
+    @if(entry.episodeThoughts.Count > 0)
+    {
+        @for (int i = 1; i < entry.episodeThoughts.Count; i++)
+        {
+            <div>
+                <p> Episode:@i </p>
+                <p> @entry.episodeThoughts[i] </p>
+            </div>
+        }
+    }  
+</div>
+
+
+@code {
+    List<Entry> entryList = new List<Entry>();
+    Entry entry = new Entry
+    {
+        dateStarted = DateOnly.Parse(DateTime.Now.ToLongDateString()),
+        dateFinished = DateOnly.Parse(DateTime.Now.ToLongDateString()),
+        episodeThoughts = new List<string>() { new string("") },
+        type = ETypes.None
+    };
+
+    protected override async Task OnInitializedAsync()
+    {        
+        await GetEntryLocal();
+        entry = entryList[EntryContainer.index];
+    }
+
+    private async Task GetEntryLocal()
+    {
+        var result = await protectedLocalStorage.GetAsync<List<Entry>>("entryList");
+        if (result.Value != null)
+            entryList = result.Value;
+
+    }
+}

@@ -24,6 +24,7 @@
                 <label class="form-label"> Date Finished:&nbsp;@entry.dateFinished &nbsp; | &nbsp;</label>
                 <br />
                 <label class="form-label"> @entry.thoughts &nbsp;</label>
+                <button class="btn btn-primary" @onclick="@(() => ViewDetails(entryList.IndexOf(entry)))">Details</button>
                 <button class="btn btn-primary" @onclick="@(() => EditEntry(entryList.IndexOf(entry)))">Edit</button>
                 <button class="btn btn-primary" @onclick="@(() => DeleteEntryLocal(entryList.IndexOf(entry)))">Delete</button>
             </div>
@@ -58,6 +59,12 @@
                 sortedList.Add(entry);
             }
         }
+    }
+
+    private void ViewDetails(int index)
+    {
+        EntryContainer.index = index;
+        NavigationManager.NavigateTo("/details");
     }
 
     private void EditEntry(int index)
