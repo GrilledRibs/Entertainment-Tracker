@@ -9,36 +9,94 @@
 
 <h1>Books</h1>
 
+<div class="mb-3">
+    Genre
+    <InputSelect class="form-select" @bind-value="genre">
+        @if (genres != null)
+        {
+            <option Value="All" class="form-check-input">All</option>
+            @foreach (string genre in genres)
+            {
+                <option @key="@genre" Value="@genre" class="form-check-input">@genre</option>
+            }
+        }
+    </InputSelect>
+</div>
+
+<div class="mb-3">
+    Shelf
+    <InputSelect class="form-select" @bind-value="shelf">
+        @if (shelves != null)
+        {
+            <option Value="All" class="form-check-input">All</option>
+            @foreach (string shelf in shelves)
+            {
+                <option @key="@shelf" Value="@shelf" class="form-check-input">@shelf</option>
+            }
+        }
+    </InputSelect>
+</div>
+<button class="btn btn-primary" @onclick="@UpdateSortedList">Update List</button>
+
 @if (sortedList.Count > 0)
 {
     @foreach (Entry entry in sortedList)
     {
-        <div class="outerDiv">
-            <div class="innerDiv">
-                <h3>@entry.name</h3>
-                <label class="form-label"> Format:&nbsp;@entry.type &nbsp; | &nbsp;</label>
-                <label class="form-label"> Rating:&nbsp;@entry.rating / 10 &nbsp; | &nbsp;</label>
-                <label class="form-label"> Genre:&nbsp;@entry.genre &nbsp; | &nbsp;</label>
-                <label class="form-label"> Shelf:&nbsp;@entry.shelf &nbsp; | &nbsp;</label>
-                <label class="form-label"> Date Started:&nbsp;@entry.dateStarted &nbsp; | &nbsp;</label>
-                <label class="form-label"> Date Finished:&nbsp;@entry.dateFinished &nbsp; | &nbsp;</label>
-                <br />
-                <label class="form-label"> @entry.thoughts &nbsp;</label>
-                <button class="btn btn-primary" @onclick="@(() => ViewDetails(entryList.IndexOf(entry)))">Details</button>
-                <button class="btn btn-primary" @onclick="@(() => EditEntry(entryList.IndexOf(entry)))">Edit</button>
-                <button class="btn btn-primary" @onclick="@(() => DeleteEntryLocal(entryList.IndexOf(entry)))">Delete</button>
+        if ((genre == "All" || entry.genre == genre) && (shelf == "All" || entry.shelf == shelf))
+        {
+            <div class="outerDiv">
+                <div class="innerDiv">
+                    <h3>@entry.name</h3>
+                    <label class="form-label"> Format:&nbsp;@entry.type &nbsp; | &nbsp;</label>
+                    <label class="form-label"> Rating:&nbsp;@entry.rating / 10 &nbsp; | &nbsp;</label>
+                    <label class="form-label"> Genre:&nbsp;@entry.genre &nbsp; | &nbsp;</label>
+                    <label class="form-label"> Shelf:&nbsp;@entry.shelf &nbsp; | &nbsp;</label>
+                    <label class="form-label"> Date Started:&nbsp;@entry.dateStarted &nbsp; | &nbsp;</label>
+                    <label class="form-label"> Date Finished:&nbsp;@entry.dateFinished &nbsp; | &nbsp;</label>
+                    <br />
+                    <label class="form-label"> @entry.thoughts &nbsp;</label>
+                    <br />
+                    <button class="btn btn-primary" @onclick="@(() => ViewDetails(entryList.IndexOf(entry)))">Details</button>
+                    <button class="btn btn-primary" @onclick="@(() => EditEntry(entryList.IndexOf(entry)))">Edit</button>
+                    <button class="btn btn-primary" @onclick="@(() => DeleteEntryLocal(entryList.IndexOf(entry)))">Delete</button>
+                </div>
             </div>
-        </div>
+        }       
     }
 }
 
 @code {
     List<Entry> entryList = new List<Entry>();
     List<Entry> sortedList = new List<Entry>();
+    string genre = "All";
+    string shelf = "All";
+    List<string> genres = new List<string>();
+    List<string> shelves = new List<string>();
+    ETypes type = ETypes.Book;
 
     protected override async Task OnInitializedAsync()
     {
         await GetEntryLocal();
+        await UpdateGenres();
+        await UpdateSheves();
+    }
+
+    private async Task UpdateGenres()
+    {
+        var result = await protectedLocalStorage.GetAsync<List<string>>("genres" + type);
+        if (result.Value == null)
+            genres = new List<string>();
+        else
+            genres = result.Value;
+    }
+
+    private async Task UpdateSheves()
+    {
+        var result = await protectedLocalStorage.GetAsync<List<string>>("shelves" + type);
+        if (result.Value == null)
+            shelves = new List<string>();
+        else
+            shelves = result.Value;
     }
 
     private async Task GetEntryLocal()
@@ -53,11 +111,17 @@
     private void UpdateSortedList()
     {
         foreach (Entry entry in entryList)
-        {
-            if (entry.type == ETypes.Book)
-            {
-                sortedList.Add(entry);
-            }
+        {        
+            if (entry.type != ETypes.Book)
+                continue;
+
+            //if (genre != "All" && entry.genre != genre)
+            //    continue;           
+
+            //if (shelf != "All" && entry.shelf != shelf)
+            //    continue;        
+            
+            sortedList.Add(entry);
         }
     }
 

@@ -100,8 +100,10 @@
         </div>
     </div>
 
-
-    <button class="btn btn-primary" @onclick="@StoreEntryLocal">Save Changes</button>
+    <div style="padding-bottom:20px">
+        <button class="btn btn-primary" @onclick="@StoreEntryLocal">Save Changes</button>
+    </div>
+    
 </EditForm>
 @code {
     Entry entry = new Entry
