@@ -267,6 +267,7 @@
         entryList.Add(entry);
 
         await protectedLocalStorage.SetAsync("entryList", entryList);
+        NavigationManager.NavigateTo("tracker");
     }
 
     private async Task GetEntry()

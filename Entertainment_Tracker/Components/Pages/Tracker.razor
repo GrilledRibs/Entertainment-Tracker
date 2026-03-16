@@ -3,11 +3,23 @@
 @inject NavigationManager NavigationManager
 @inject EntryContainer EntryContainer
 
-@page "/books"
+@page "/tracker"
 
-<PageTitle>Books</PageTitle>
+<PageTitle>Entertainment Tracker</PageTitle>
 
-<h1>Books</h1>
+<h1>@type</h1>
+
+<div class="mb-3">
+    @foreach (ETypes types in Enum.GetValues(typeof(ETypes)))
+    {
+        if (types != ETypes.None)
+        {
+            <input type="radio" name="EntertainmentType" value="@types" @onchange="TypeSelection" />
+            <label class="form-check-label">@types &nbsp;</label>
+        }
+    }
+        <button class="btn btn-primary" style="float: right;" @onclick="@(() => GoToAddEntry())">New entry</button>  
+</div>
 
 <div class="mb-3">
     Genre
@@ -36,7 +48,6 @@
         }
     </InputSelect>
 </div>
-<button class="btn btn-primary" @onclick="@UpdateSortedList">Update List</button>
 
 @if (sortedList.Count > 0)
 {
@@ -74,11 +85,20 @@
     List<string> shelves = new List<string>();
     ETypes type = ETypes.Book;
 
+
     protected override async Task OnInitializedAsync()
     {
         await GetEntryLocal();
         await UpdateGenres();
         await UpdateSheves();
+    }
+
+    private async Task TypeSelection(ChangeEventArgs args)
+    {
+        type = Enum.Parse<ETypes>(args.Value.ToString());
+        await UpdateGenres();
+        await UpdateSheves();
+        UpdateSortedList();
     }
 
     private async Task UpdateGenres()
@@ -110,9 +130,10 @@
 
     private void UpdateSortedList()
     {
+        sortedList.Clear();
         foreach (Entry entry in entryList)
         {        
-            if (entry.type != ETypes.Book)
+            if (entry.type != type)
                 continue;
 
             //if (genre != "All" && entry.genre != genre)
@@ -120,7 +141,7 @@
 
             //if (shelf != "All" && entry.shelf != shelf)
             //    continue;        
-            
+
             sortedList.Add(entry);
         }
     }
@@ -142,5 +163,10 @@
         entryList.RemoveAt(index);
         await protectedLocalStorage.SetAsync("entryList", entryList);
         UpdateSortedList();
+    }
+
+    private void GoToAddEntry()
+    {
+        NavigationManager.NavigateTo("addentry");
     }
 }
