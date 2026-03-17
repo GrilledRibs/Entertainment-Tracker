@@ -1,0 +1,23 @@
+body[b-6a7cct2sse] {
+}
+
+.sidebyside[b-6a7cct2sse] {
+    display: flex;
+    align-items: center;
+}
+
+.dropdowndiv[b-6a7cct2sse] {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    min-width: 100px;
+}
+.mr-10[b-6a7cct2sse] {
+    margin-right: 10px;
+}
+.ml-10[b-6a7cct2sse]{
+    margin-left: 10px;
+}
+.mb-10[b-6a7cct2sse]{
+    margin-bottom:10px;
+}
+

@@ -12,10 +12,22 @@ h1[b-zxu23a15t4] {
 .outerDiv[b-zxu23a15t4] {
     background-color: rgb(5, 39, 103);
     color: white;
-    margin: 20px;
-    border-radius:10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 10px;
 }
 
-.innerDiv[b-zxu23a15t4]{
+.sidebyside[b-zxu23a15t4] {
+    display: flex;
+    align-items:end;
+}
+
+
+.dropdown[b-zxu23a15t4] {
+    margin-right:10px;
+}
+
+.right-button[b-zxu23a15t4] {
+    margin-left: auto;
     padding:10px;
 }

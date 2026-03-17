@@ -18,35 +18,38 @@
             <label class="form-check-label">@types &nbsp;</label>
         }
     }
-        <button class="btn btn-primary" style="float: right;" @onclick="@(() => GoToAddEntry())">New entry</button>  
+        
 </div>
 
-<div class="mb-3">
-    Genre
-    <InputSelect class="form-select" @bind-value="genre">
-        @if (genres != null)
-        {
-            <option Value="All" class="form-check-input">All</option>
-            @foreach (string genre in genres)
+<div class="sidebyside">
+    <div class="dropdown">
+        Genre
+        <InputSelect class="form-select" @bind-value="genre">
+            @if (genres != null)
             {
-                <option @key="@genre" Value="@genre" class="form-check-input">@genre</option>
+                <option Value="All" class="form-check-input">All</option>
+                @foreach (string genre in genres)
+                {
+                    <option @key="@genre" Value="@genre" class="form-check-input">@genre</option>
+                }
             }
-        }
-    </InputSelect>
-</div>
+        </InputSelect>
+    </div>
 
-<div class="mb-3">
-    Shelf
-    <InputSelect class="form-select" @bind-value="shelf">
-        @if (shelves != null)
-        {
-            <option Value="All" class="form-check-input">All</option>
-            @foreach (string shelf in shelves)
+    <div class="dropdown">
+        Shelf
+        <InputSelect class="form-select" @bind-value="shelf">
+            @if (shelves != null)
             {
-                <option @key="@shelf" Value="@shelf" class="form-check-input">@shelf</option>
+                <option Value="All" class="form-check-input">All</option>
+                @foreach (string shelf in shelves)
+                {
+                    <option @key="@shelf" Value="@shelf" class="form-check-input">@shelf</option>
+                }
             }
-        }
-    </InputSelect>
+        </InputSelect>
+    </div>  
+    <button class="btn btn-primary right-button" @onclick="@(() => GoToAddEntry())">New entry</button>
 </div>
 
 @if (sortedList.Count > 0)
@@ -56,21 +59,20 @@
         if ((genre == "All" || entry.genre == genre) && (shelf == "All" || entry.shelf == shelf))
         {
             <div class="outerDiv">
-                <div class="innerDiv">
-                    <h3>@entry.name</h3>
-                    <label class="form-label"> Format:&nbsp;@entry.type &nbsp; | &nbsp;</label>
-                    <label class="form-label"> Rating:&nbsp;@entry.rating / 10 &nbsp; | &nbsp;</label>
-                    <label class="form-label"> Genre:&nbsp;@entry.genre &nbsp; | &nbsp;</label>
-                    <label class="form-label"> Shelf:&nbsp;@entry.shelf &nbsp; | &nbsp;</label>
-                    <label class="form-label"> Date Started:&nbsp;@entry.dateStarted &nbsp; | &nbsp;</label>
-                    <label class="form-label"> Date Finished:&nbsp;@entry.dateFinished &nbsp; | &nbsp;</label>
-                    <br />
-                    <label class="form-label"> @entry.thoughts &nbsp;</label>
-                    <br />
-                    <button class="btn btn-primary" @onclick="@(() => ViewDetails(entryList.IndexOf(entry)))">Details</button>
-                    <button class="btn btn-primary" @onclick="@(() => EditEntry(entryList.IndexOf(entry)))">Edit</button>
-                    <button class="btn btn-primary" @onclick="@(() => DeleteEntryLocal(entryList.IndexOf(entry)))">Delete</button>
-                </div>
+                <h3>@entry.name</h3>
+                <label class="form-label"> Format:&nbsp;@entry.type &nbsp; | &nbsp;</label>
+                <label class="form-label"> Rating:&nbsp;@entry.rating / 10 &nbsp; | &nbsp;</label>
+                <label class="form-label"> Genre:&nbsp;@entry.genre &nbsp; | &nbsp;</label>
+                <label class="form-label"> Shelf:&nbsp;@entry.shelf &nbsp; | &nbsp;</label>
+                <label class="form-label"> Date Started:&nbsp;@entry.dateStarted &nbsp; | &nbsp;</label>
+                <label class="form-label"> Date Finished:&nbsp;@entry.dateFinished &nbsp; | &nbsp;</label>
+                <br />
+                <label class="form-label"> Thoughts: &nbsp;</label> <br/>
+                <label class="form-label"> @entry.thoughts &nbsp;</label>
+                <br />
+                <button class="btn btn-primary" @onclick="@(() => ViewDetails(entryList.IndexOf(entry)))">Details</button>
+                <button class="btn btn-primary" @onclick="@(() => EditEntry(entryList.IndexOf(entry)))">Edit</button>
+                <button class="btn btn-primary" @onclick="@(() => DeleteEntryLocal(entryList.IndexOf(entry)))">Delete</button>        
             </div>
         }       
     }

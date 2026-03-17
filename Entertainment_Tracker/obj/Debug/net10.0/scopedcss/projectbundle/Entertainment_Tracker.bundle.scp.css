@@ -203,6 +203,55 @@ main[b-bgl45butvl] {
         overflow-y: auto;
     }
 }
+/* /Components/Pages/AddEntry.razor.rz.scp.css */
+body[b-6a7cct2sse] {
+}
+
+.sidebyside[b-6a7cct2sse] {
+    display: flex;
+    align-items: center;
+}
+
+.dropdowndiv[b-6a7cct2sse] {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    min-width: 100px;
+}
+.mr-10[b-6a7cct2sse] {
+    margin-right: 10px;
+}
+.ml-10[b-6a7cct2sse]{
+    margin-left: 10px;
+}
+.mb-10[b-6a7cct2sse]{
+    margin-bottom:10px;
+}
+
+/* /Components/Pages/EditEntry.razor.rz.scp.css */
+body[b-slq6plh6e2] {
+}
+
+.sidebyside[b-slq6plh6e2] {
+    display: flex;
+    align-items: center;
+}
+
+.dropdowndiv[b-slq6plh6e2] {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    min-width: 100px;
+}
+
+.mr-10[b-slq6plh6e2] {
+    margin-right: 10px;
+}
+.ml-10[b-slq6plh6e2] {
+    margin-left: 10px;
+}
+.mb-10[b-slq6plh6e2] {
+    margin-bottom: 10px;
+}
+
 /* /Components/Pages/Tracker.razor.rz.scp.css */
 body[b-zxu23a15t4] {
 
@@ -218,10 +267,22 @@ h1[b-zxu23a15t4] {
 .outerDiv[b-zxu23a15t4] {
     background-color: rgb(5, 39, 103);
     color: white;
-    margin: 20px;
-    border-radius:10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 10px;
 }
 
-.innerDiv[b-zxu23a15t4]{
+.sidebyside[b-zxu23a15t4] {
+    display: flex;
+    align-items:end;
+}
+
+
+.dropdown[b-zxu23a15t4] {
+    margin-right:10px;
+}
+
+.right-button[b-zxu23a15t4] {
+    margin-left: auto;
     padding:10px;
 }

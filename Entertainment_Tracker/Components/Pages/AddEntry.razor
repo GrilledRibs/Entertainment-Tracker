@@ -9,6 +9,7 @@
         Name:
         <InputText @bind-Value="entry.name" />
     </div>
+
     <div class="mb-3">
         @foreach (ETypes types in Enum.GetValues(typeof(ETypes)))
         {
@@ -20,89 +21,100 @@
         }
 
     </div>
-    <div class="mb-3">  
-        Rating
-        <InputSelect class="form-select" @bind-value="entry.rating">
-            
-            @for (int i = 1; i <= 10;  i++)
-            {
-                <option Value="@i" class="form-check-input">@i</option>
-            }
-        </InputSelect>
-    </div>
-    <div class="mb-3">
-        Genre
-        <InputSelect class="form-select" @bind-value="entry.genre">
-            @if(genres != null)
-            {
-                <option Value="" class="form-check-input"></option>
-                @foreach (string genre in genres)
+    <div class="sidebyside">
+        <div class="dropdowndiv">
+            Rating
+            <InputSelect class="form-select " @bind-value="entry.rating">
+
+                @for (int i = 1; i <= 10; i++)
                 {
-                    <option @key="@genre" Value="@genre" class="form-check-input">@genre</option>
+                    <option Value="@i" class="form-check-input">@i</option>
                 }
-            }           
-        </InputSelect>
+            </InputSelect>
+        </div>
+        <div class="dropdowndiv">
+            Genre
+            <InputSelect class="form-select " @bind-value="entry.genre">
+                @if (genres != null)
+                {
+                    <option Value="" class="form-check-input"></option>
+                    @foreach (string genre in genres)
+                    {
+                        <option @key="@genre" Value="@genre" class="form-check-input">@genre</option>
+                    }
+                }
+            </InputSelect>
+        </div>
     </div>
+
     
     <div class="mb-3">
         Add new genre:
         <InputText @bind-Value="newGenre" />
-        <button class="btn btn-primary" @onclick="@AddNewGenre">Add new genre</button>
-        <button class="btn btn-primary" @onclick="@DeleteGenre">Delete the above selected genre</button>
+        <button class="btn btn-primary mr-10 ml-10" @onclick="@AddNewGenre">Add new genre</button>
+        <button class="btn btn-primary mr-10" @onclick="@DeleteGenre">Delete the above selected genre</button>
     </div>
 
-    <div class="mb-3">
-        Shelf
-        <InputSelect class="form-select" @bind-value="entry.shelf">           
-            @if (shelves != null)
-            {
-                <option Value="" class="form-check-input"></option>
-                @foreach (string shelf in shelves)
+    <div class="sidebyside">
+        <div class="dropdowndiv ">
+            Shelf
+            <InputSelect class="form-select" @bind-value="entry.shelf">
+                @if (shelves != null)
                 {
-                    <option @key="@shelf" Value="@shelf" class="form-check-input" >@shelf</option>
+                    <option Value="" class="form-check-input"></option>
+                    @foreach (string shelf in shelves)
+                    {
+                        <option @key="@shelf" Value="@shelf" class="form-check-input">@shelf</option>
+                    }
                 }
-            }
-        </InputSelect>
+            </InputSelect>
+        </div>
     </div>
+    
     <div class="mb-3">
         Add new shelf:
         <InputText @bind-Value="newShelf" />
-        <button class="btn btn-primary" @onclick="@AddNewShelf">Add new shelf</button>
-        <button class="btn btn-primary" @onclick="@DeleteShelf">Delete the above selected shelf</button>
+        <button class="btn btn-primary mr-10 ml-10" @onclick="@AddNewShelf">Add new shelf</button>
+        <button class="btn btn-primary mr-10" @onclick="@DeleteShelf">Delete the above selected shelf</button>
     </div>
 
-    <div class="mb-3">
-        <label class="form-label"> Date Started </label>
-        <InputDate @bind-Value="@entry.dateStarted" class="form-control" /> 
-    </div>
+    <div class="sidebyside mb-10">
+        <div class="mr-10">
+            <label class="form-label"> Date Started </label>
+            <InputDate @bind-Value="@entry.dateStarted" class="form-control" />
+        </div>
 
-    <div class="mb-3">
-        <label class="form-label"> Date Finished </label>
-        <InputDate @bind-Value="@entry.dateFinished" class="form-control" />
+        <div class="mr-10">
+            <label class="form-label"> Date Finished </label>
+            <InputDate @bind-Value="@entry.dateFinished" class="form-control" />
+        </div>
     </div>
+    
 
     <div class="mb-3">
         <label class="form-label"> Thoughts </label> <br />
         <InputTextArea @bind-Value="@entry.thoughts" style="width: 50%;"  />
     </div>
+  
     
-    <div class="mb-4">
-        <div class="mb-2">
-        Select Episode
-            <select value="@selectedEpisode" class="form-select" @onchange="ChangeSelectedEpisodeThoughts">
-            @if (shelves != null)
-            {
-                @for (int i = 1; i <= entry.episodes; i++)
-                {
-                    <option @key="@i" Value="@i" class="form-check-input">@i</option>
-                }
-            }
-        </select>
+    <div class="mb-10">
+        <div class="sidebyside">
+            <div class="dropdowndiv">
+                Select Episode
+                <select value="@selectedEpisode" class="form-select" @onchange="ChangeSelectedEpisodeThoughts">
+                    @if (shelves != null)
+                    {
+                        @for (int i = 1; i <= entry.episodes; i++)
+                        {
+                            <option @key="@i" Value="@i" class="form-check-input">@i</option>
+                        }
+                    }
+                </select>
+            </div>
+            <button class="btn btn-primary mr-10" @onclick="@AddEpisode">Add new episode</button>
+            <button class="btn btn-primary mr-10" @onclick="@DeleteLatestEpisode">Delete latest episode</button>
         </div>
-        <div class="mb-2">
-            <button class="btn btn-primary" @onclick="@AddEpisode">Add new episode</button>
-            <button class="btn btn-primary" @onclick="@DeleteLatestEpisode">Delete latest episode</button>
-        </div>
+       
 
         <div class="mb-2">
             <label class="form-label"> Thoughts on selected episode </label> <br />

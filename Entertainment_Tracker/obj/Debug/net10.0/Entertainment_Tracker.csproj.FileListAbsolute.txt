@@ -135,5 +135,7 @@ D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker\obj\Debug\net10.0
 D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker\obj\Debug\net10.0\Entertainment_Tracker.genruntimeconfig.cache
 D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker\obj\Debug\net10.0\ref\Entertainment_Tracker.dll
 D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker\obj\Debug\net10.0\scopedcss\Components\Pages\Tracker.razor.rz.scp.css
-D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker\obj\Debug\net10.0\compressed\fi48pnwsuz-{0}-2ri4ezchk2-2ri4ezchk2.gz
-D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker\obj\Debug\net10.0\compressed\golplk9r1a-{0}-2ri4ezchk2-2ri4ezchk2.gz
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker\obj\Debug\net10.0\scopedcss\Components\Pages\AddEntry.razor.rz.scp.css
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker\obj\Debug\net10.0\scopedcss\Components\Pages\EditEntry.razor.rz.scp.css
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker\obj\Debug\net10.0\compressed\fi48pnwsuz-{0}-2kvgxrjk06-2kvgxrjk06.gz
+D:\Projects\Blazor\Entertainment-Tracker\Entertainment_Tracker\obj\Debug\net10.0\compressed\golplk9r1a-{0}-2kvgxrjk06-2kvgxrjk06.gz
