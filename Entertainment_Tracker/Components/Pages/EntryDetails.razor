@@ -7,7 +7,7 @@
 
 <PageTitle>Entry Details</PageTitle>
 
-<div>
+<div class="outerDiv">
     <div>
         <h3>@entry.name</h3>
         <label class="form-label"> Format:&nbsp;@entry.type &nbsp; | &nbsp;</label>
@@ -18,18 +18,23 @@
         <label class="form-label"> Date Finished:&nbsp;@entry.dateFinished &nbsp; | &nbsp;</label>
     </div>
     <div>
+        Thoughts: 
         <p> @entry.thoughts &nbsp;</p>
     </div>
-    @if(entry.episodeThoughts.Count > 0)
+
+</div>
+
+<div>
+    @if (entry.episodeThoughts.Count > 0)
     {
         @for (int i = 1; i < entry.episodeThoughts.Count; i++)
         {
-            <div>
-                <p> Episode:@i </p>
+            <div class="outerDiv">
+                <p> Episode: @i </p>
                 <p> @entry.episodeThoughts[i] </p>
             </div>
         }
-    }  
+    }
 </div>
 
 

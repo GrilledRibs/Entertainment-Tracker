@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "D:\\Projects\\Blazor\\Entertainment-Tracker\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|d:\\projects\\blazor\\entertainment-tracker\\entertainment_tracker\\components\\pages\\editentry.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|solutionrelative:entertainment_tracker\\components\\pages\\editentry.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|d:\\projects\\blazor\\entertainment-tracker\\entertainment_tracker\\components\\pages\\entrydetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|solutionrelative:entertainment_tracker\\components\\pages\\entrydetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|d:\\projects\\blazor\\entertainment-tracker\\entertainment_tracker\\components\\pages\\addentry.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|solutionrelative:entertainment_tracker\\components\\pages\\addentry.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|d:\\projects\\blazor\\entertainment-tracker\\entertainment_tracker\\components\\pages\\addentry.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|solutionrelative:entertainment_tracker\\components\\pages\\addentry.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|d:\\projects\\blazor\\entertainment-tracker\\entertainment_tracker\\components\\pages\\editentry.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|solutionrelative:entertainment_tracker\\components\\pages\\editentry.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|d:\\projects\\blazor\\entertainment-tracker\\entertainment_tracker\\components\\pages\\entrydetails.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|solutionrelative:entertainment_tracker\\components\\pages\\entrydetails.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|d:\\projects\\blazor\\entertainment-tracker\\entertainment_tracker\\components\\pages\\tracker.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
@@ -27,20 +19,20 @@
       "RelativeMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|solutionrelative:entertainment_tracker\\components\\pages\\tracker.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|d:\\projects\\blazor\\entertainment-tracker\\entertainment_tracker\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|solutionrelative:entertainment_tracker\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|d:\\projects\\blazor\\entertainment-tracker\\entertainment_tracker\\components\\pages\\addentry.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|solutionrelative:entertainment_tracker\\components\\pages\\addentry.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|d:\\projects\\blazor\\entertainment-tracker\\entertainment_tracker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|solutionrelative:entertainment_tracker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|d:\\projects\\blazor\\entertainment-tracker\\entertainment_tracker\\components\\pages\\addentry.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|solutionrelative:entertainment_tracker\\components\\pages\\addentry.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|d:\\projects\\blazor\\entertainment-tracker\\entertainment_tracker\\entry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|solutionrelative:entertainment_tracker\\entry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|d:\\projects\\blazor\\entertainment-tracker\\entertainment_tracker\\components\\pages\\editentry.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|solutionrelative:entertainment_tracker\\components\\pages\\editentry.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|d:\\projects\\blazor\\entertainment-tracker\\entertainment_tracker\\components\\pages\\entrydetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|solutionrelative:entertainment_tracker\\components\\pages\\entrydetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|d:\\projects\\blazor\\entertainment-tracker\\entertainment_tracker\\components\\pages\\editentry.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{753FB934-E0E5-40A9-BD36-0EEE485228DF}|Entertainment_Tracker\\Entertainment_Tracker.csproj|solutionrelative:entertainment_tracker\\components\\pages\\editentry.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,68 +50,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "NavMenu.razor",
-              "DocumentMoniker": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Components\\Layout\\NavMenu.razor",
-              "RelativeDocumentMoniker": "Entertainment_Tracker\\Components\\Layout\\NavMenu.razor",
-              "ToolTip": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Components\\Layout\\NavMenu.razor",
-              "RelativeToolTip": "Entertainment_Tracker\\Components\\Layout\\NavMenu.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-16T02:35:21.731Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 0,
               "Title": "EntryDetails.razor",
               "DocumentMoniker": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Components\\Pages\\EntryDetails.razor",
               "RelativeDocumentMoniker": "Entertainment_Tracker\\Components\\Pages\\EntryDetails.razor",
               "ToolTip": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Components\\Pages\\EntryDetails.razor",
               "RelativeToolTip": "Entertainment_Tracker\\Components\\Pages\\EntryDetails.razor",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAABGAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-12T02:32:53.866Z"
+              "WhenOpened": "2026-03-12T02:32:53.866Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Entry.cs",
-              "DocumentMoniker": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Entry.cs",
-              "RelativeDocumentMoniker": "Entertainment_Tracker\\Entry.cs",
-              "ToolTip": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Entry.cs",
-              "RelativeToolTip": "Entertainment_Tracker\\Entry.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T02:27:46.331Z"
+              "DocumentIndex": 1,
+              "Title": "EntryDetails.razor.css",
+              "DocumentMoniker": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Components\\Pages\\EntryDetails.razor.css",
+              "RelativeDocumentMoniker": "Entertainment_Tracker\\Components\\Pages\\EntryDetails.razor.css",
+              "ToolTip": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Components\\Pages\\EntryDetails.razor.css",
+              "RelativeToolTip": "Entertainment_Tracker\\Components\\Pages\\EntryDetails.razor.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-03-18T04:26:58.35Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Program.cs",
-              "RelativeDocumentMoniker": "Entertainment_Tracker\\Program.cs",
-              "ToolTip": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Program.cs",
-              "RelativeToolTip": "Entertainment_Tracker\\Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T05:14:13.092Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "EditEntry.razor",
               "DocumentMoniker": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Components\\Pages\\EditEntry.razor",
               "RelativeDocumentMoniker": "Entertainment_Tracker\\Components\\Pages\\EditEntry.razor",
               "ToolTip": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Components\\Pages\\EditEntry.razor",
               "RelativeToolTip": "Entertainment_Tracker\\Components\\Pages\\EditEntry.razor",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAACcAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-03-10T05:09:10.452Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "EditEntry.razor.css",
               "DocumentMoniker": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Components\\Pages\\EditEntry.razor.css",
               "RelativeDocumentMoniker": "Entertainment_Tracker\\Components\\Pages\\EditEntry.razor.css",
@@ -127,25 +97,24 @@
               "RelativeToolTip": "Entertainment_Tracker\\Components\\Pages\\EditEntry.razor.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-03-17T04:53:54.124Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-17T04:53:54.124Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "AddEntry.razor",
               "DocumentMoniker": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Components\\Pages\\AddEntry.razor",
               "RelativeDocumentMoniker": "Entertainment_Tracker\\Components\\Pages\\AddEntry.razor",
               "ToolTip": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Components\\Pages\\AddEntry.razor",
               "RelativeToolTip": "Entertainment_Tracker\\Components\\Pages\\AddEntry.razor",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAADUAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-03-03T06:12:51.428Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "AddEntry.razor.css",
               "DocumentMoniker": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Components\\Pages\\AddEntry.razor.css",
               "RelativeDocumentMoniker": "Entertainment_Tracker\\Components\\Pages\\AddEntry.razor.css",
@@ -158,26 +127,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Tracker.razor",
               "DocumentMoniker": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Components\\Pages\\Tracker.razor",
               "RelativeDocumentMoniker": "Entertainment_Tracker\\Components\\Pages\\Tracker.razor",
               "ToolTip": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Components\\Pages\\Tracker.razor",
               "RelativeToolTip": "Entertainment_Tracker\\Components\\Pages\\Tracker.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-03-03T01:44:49.85Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Tracker.razor.css",
               "DocumentMoniker": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Components\\Pages\\Tracker.razor.css",
               "RelativeDocumentMoniker": "Entertainment_Tracker\\Components\\Pages\\Tracker.razor.css",
               "ToolTip": "D:\\Projects\\Blazor\\Entertainment-Tracker\\Entertainment_Tracker\\Components\\Pages\\Tracker.razor.css",
               "RelativeToolTip": "Entertainment_Tracker\\Components\\Pages\\Tracker.razor.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2026-03-09T04:24:46.986Z",
               "EditorCaption": ""

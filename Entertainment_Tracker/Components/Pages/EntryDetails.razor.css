@@ -1,0 +1,10 @@
+﻿body {
+}
+
+.outerDiv {
+    background-color: rgb(5, 39, 103);
+    color: white;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 10px;
+}
